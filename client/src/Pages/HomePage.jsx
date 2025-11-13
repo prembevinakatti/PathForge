@@ -169,29 +169,116 @@ const HomePage = () => {
       <footer className="w-full bg-white/50 backdrop-blur-lg border-t border-[#EADFC8] mt-20 py-4 text-center text-[#8B7760] text-sm z-10">
         © {new Date().getFullYear()} PathForge — AI Roadmap Generator
       </footer>
-
       {loading && (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="fixed inset-0 bg-[#0a0a0a]/70 backdrop-blur-2xl flex flex-col items-center justify-center z-[999]"
+          className="fixed inset-0 flex flex-col items-center justify-center 
+              bg-[#020202]/95 backdrop-blur-2xl z-[999999] overflow-hidden"
         >
-          {/* Gold Floating Neurons */}
-          {[...Array(25)].map((_, i) => (
+          {/* ====================================================== */}
+          {/*       1️⃣ QUANTUM GRID (Procedural AI Flow Grid)       */}
+          {/* ====================================================== */}
+          <svg
+            className="absolute inset-0 opacity-[0.12]"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <pattern
+              id="quantumGrid"
+              width="120"
+              height="120"
+              patternUnits="userSpaceOnUse"
+            >
+              <path
+                d="M0 60 H120 M60 0 V120"
+                stroke="#D4AF37"
+                strokeWidth="0.4"
+                className="opacity-30"
+              />
+            </pattern>
+            <rect width="100%" height="100%" fill="url(#quantumGrid)" />
+          </svg>
+
+          {/* ====================================================== */}
+          {/*          2️⃣ FLOATING HOLOGRAM GLYPHS                   */}
+          {/* ====================================================== */}
+          {[..."⚛️🧠✨⚡🔮📡🌐🧩"].map((glyph, i) => (
             <motion.div
               key={i}
               animate={{
+                y: [0, -20, 0],
                 opacity: [0.2, 1, 0.2],
-                scale: [0.5, 1.4, 0.5],
-                x: [0, Math.random() * 40 - 20, 0],
-                y: [0, Math.random() * 40 - 20, 0],
+              }}
+              transition={{ repeat: Infinity, duration: 4 + i, delay: i * 0.3 }}
+              className="absolute text-4xl"
+              style={{
+                left: `${10 + i * 10}%`,
+                top: `${20 + (i % 5) * 12}%`,
+              }}
+            >
+              {glyph}
+            </motion.div>
+          ))}
+
+          {/* ====================================================== */}
+          {/*         3️⃣ 4-LAYER HOLOGRAPHIC ROTATION RINGS          */}
+          {/* ====================================================== */}
+          <div className="relative w-[500px] h-[500px]">
+            {/* OUTER RING */}
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
+              className="absolute inset-0 border-[6px] border-[#F7E7AF]/20 rounded-full blur-[1px]"
+            />
+
+            {/* SECOND RING */}
+            <motion.div
+              animate={{ rotate: -360 }}
+              transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
+              className="absolute inset-10 border-[3px] border-[#D4AF37]/40 rounded-full"
+            />
+
+            {/* THIRD RING ( hologram dashed lines ) */}
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+              className="absolute inset-20 border-[3px] border-dashed border-[#E8C97A]/50 rounded-full"
+            />
+
+            {/* INNER CORE */}
+            <motion.div
+              animate={{ scale: [1, 1.2, 1] }}
+              transition={{ repeat: Infinity, duration: 2 }}
+              className="absolute inset-40 bg-[#D4AF37]/40 rounded-full blur-2xl shadow-[0_0_50px_#D4AF37]"
+            />
+
+            {/* CORE PARTICLE */}
+            <motion.div
+              animate={{ scale: [1, 1.4, 1], opacity: [1, 0.6, 1] }}
+              transition={{ repeat: Infinity, duration: 1.6 }}
+              className="absolute top-1/2 left-1/2 w-14 h-14 
+                   -translate-x-1/2 -translate-y-1/2
+                   bg-gradient-to-br from-[#FFD97A] to-[#D4AF37] rounded-full shadow-[0_0_30px_#FFD97A]"
+            />
+          </div>
+
+          {/* ====================================================== */}
+          {/*         4️⃣ FLOATING PARTICLES (Neural Sparks)          */}
+          {/* ====================================================== */}
+          {[...Array(70)].map((_, i) => (
+            <motion.div
+              key={i}
+              animate={{
+                y: [0, -140, 0],
+                opacity: [0, 1, 0],
+                scale: [0.3, 1.8, 0.3],
               }}
               transition={{
                 repeat: Infinity,
-                duration: 2 + Math.random() * 2,
-                ease: "easeInOut",
+                duration: 3 + Math.random() * 2,
+                delay: i * 0.06,
               }}
-              className="absolute w-3 h-3 rounded-full bg-[#D4AF37]/90 shadow-[0_0_20px_#D4AF37]"
+              className="absolute w-[3px] h-[3px] bg-[#FFD97A] rounded-full shadow-[0_0_10px_#FFD97A]"
               style={{
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
@@ -199,80 +286,53 @@ const HomePage = () => {
             />
           ))}
 
-          {/* Neural Network Core */}
+          {/* ====================================================== */}
+          {/*     5️⃣ 3D FLOATING CUBE (Generative AI Brain)          */}
+          {/* ====================================================== */}
           <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            className="relative w-[330px] h-[330px] flex items-center justify-center"
-          >
-            {/* Pulsing Core */}
-            <motion.div
-              animate={{ scale: [1, 1.3, 1] }}
-              transition={{ repeat: Infinity, duration: 2 }}
-              className="absolute w-20 h-20 bg-[#D4AF37]/70 rounded-full blur-xl"
-            />
+            animate={{ rotateY: 360, rotateX: 360 }}
+            transition={{ repeat: Infinity, duration: 10, ease: "linear" }}
+            className="mt-10 w-32 h-32 bg-gradient-to-br from-[#D4AF37] to-[#8f6f19] 
+                 shadow-[0_0_40px_#D4AF37] rounded-xl opacity-70 transform-gpu"
+          />
 
-            {/* Central Node */}
-            <div className="absolute w-6 h-6 rounded-full bg-[#F7D57A] shadow-[0_0_25px_#F7D57A]" />
-
-            {/* Orbiting Nodes */}
-            {[...Array(6)].map((_, i) => (
-              <motion.div
-                key={i}
-                animate={{
-                  rotate: 360,
-                }}
-                transition={{
-                  repeat: Infinity,
-                  duration: 6 - i,
-                  ease: "linear",
-                }}
-                className="absolute"
-                style={{
-                  width: `${120 + i * 25}px`,
-                  height: `${120 + i * 25}px`,
-                  borderRadius: "50%",
-                }}
-              >
-                <motion.div
-                  animate={{
-                    scale: [0.8, 1.2, 0.8],
-                  }}
-                  transition={{
-                    repeat: Infinity,
-                    duration: 1.5,
-                    delay: i * 0.25,
-                  }}
-                  className="absolute w-4 h-4 bg-[#D4AF37] rounded-full shadow-[0_0_10px_#D4AF37]"
-                  style={{
-                    top: "0%",
-                    left: "50%",
-                    transform: "translateX(-50%)",
-                  }}
-                />
-              </motion.div>
-            ))}
-          </motion.div>
-
-          {/* Text Animation */}
-          <motion.p
+          {/* ====================================================== */}
+          {/*           6️⃣ AI TERMINAL STATUS TEXT                    */}
+          {/* ====================================================== */}
+          <motion.div
             initial={{ opacity: 0 }}
-            animate={{ opacity: [0.3, 1, 0.3] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-            className="text-xl md:text-2xl text-[#F7D57A] font-semibold mt-10 tracking-widest drop-shadow-lg"
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+            className="text-center mt-12"
           >
-            AI is crafting your roadmap…
-          </motion.p>
+            <motion.p
+              animate={{ opacity: [0.3, 1, 0.3] }}
+              transition={{ repeat: Infinity, duration: 1.2 }}
+              className="text-3xl text-[#F7D57A] font-extrabold tracking-[0.25em]"
+            >
+              BUILDING ROADMAP…
+            </motion.p>
 
-          {/* Typing subtext */}
-          <motion.p
-            animate={{ opacity: [0, 1, 0] }}
-            transition={{ repeat: Infinity, duration: 2 }}
-            className="text-sm text-gray-300 mt-2"
-          >
-            analyzing skills • generating milestones • preparing weekly plan
-          </motion.p>
+            <motion.p
+              animate={{ opacity: [0, 1, 0] }}
+              transition={{ repeat: Infinity, duration: 2.4 }}
+              className="text-sm text-[#cfcfcf] mt-4"
+            >
+              • Parsing expertise layers • Building knowledge lattice •
+              Generating 24-week mastery pipeline • Optimizing learning curve
+            </motion.p>
+
+            <motion.div
+              initial={{ width: 0 }}
+              animate={{ width: 260 }}
+              transition={{
+                duration: 1.8,
+                repeat: Infinity,
+                repeatType: "reverse",
+              }}
+              className="h-[3px] mx-auto mt-4 bg-gradient-to-r from-[#D4AF37] to-[#F5D98E] rounded-full shadow-lg"
+            />
+          </motion.div>
         </motion.div>
       )}
     </div>
